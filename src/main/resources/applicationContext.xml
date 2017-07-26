@@ -16,12 +16,19 @@
 ">
     <context:component-scan base-package="dao"/>
     <context:component-scan base-package="secondDao"/>
-    <bean id="cut" class="secondDao.Cutpoint"></bean>
+    <bean id="cut" class="secondDao.Cutpoint"/>
+    <bean id="student" class="dao.Student"/>
     <aop:config>
+        <!-->配置切点<-->
         <aop:aspect ref="cut">
-            <aop:pointcut id="dealfun" expression="execution(* dao.TestDao.getName(..))"></aop:pointcut>
-            <aop:before method="beforeTest" pointcut-ref="dealfun"></aop:before>
-            <aop:after method="afterTest" pointcut-ref="dealfun"></aop:after>
+            <aop:pointcut id="dealfun" expression="execution(* dao.TestDao.getName(..))"/>
+            <aop:before method="beforeTest" pointcut-ref="dealfun"/>
+            <aop:after method="afterTest" pointcut-ref="dealfun"/>
+        </aop:aspect>
+        <!-->配置切面引入新功能<-->
+        <aop:aspect>
+            <aop:declare-parents types-matching="dao.testImpl+" implement-interface="dao.StudentImpl" delegate-ref="student" />
         </aop:aspect>
     </aop:config>
+
 </beans>
