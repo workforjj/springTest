@@ -1,4 +1,6 @@
+import dao.StudentImpl;
 import dao.TestDao;
+import dao.testImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,16 +21,17 @@ private TestDao testDao;
     public void before(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         testDao = context.getBean(TestDao.class);
+//        testImpl testDaos = context.getBean(TestDao.class);
+//        ((StudentImpl) testDaos).printMs();
     }
-
     @Test
     public void test1(){
-        testDao.getName();
+        System.out.println("成功");
     }
 
     @Test
     public void test2(){
-        System.out.println("1111");
+        testDao.getargsfun("李健健");
     }
 
     @After
