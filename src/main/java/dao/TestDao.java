@@ -10,7 +10,7 @@ public class TestDao {
     public  void  getName(){
         System.out.println("sucesss!");
     };
-    public void showContent(){
+    public void showContents(){
         System.out.println("this is a showtime!");
     };
 }
