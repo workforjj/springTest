@@ -18,17 +18,19 @@
     <context:component-scan base-package="secondDao"/>
     <bean id="cut" class="secondDao.Cutpoint"/>
     <bean id="student" class="dao.Student"/>
-    <aop:config>
-        <!-->配置切点<-->
+    <!-- 是Aspect注解起作用：自动为匹配的类生产代理对象 -->
+    <aop:aspectj-autoproxy/>
+    <!--<aop:config>
+        &lt;!&ndash;dash;&gt;配置切点<&ndash;&gt;
         <aop:aspect ref="cut">
             <aop:pointcut id="dealfun" expression="execution(* dao.TestDao.getName(..))"/>
             <aop:before method="beforeTest" pointcut-ref="dealfun"/>
             <aop:after method="afterTest" pointcut-ref="dealfun"/>
         </aop:aspect>
-        <!-->配置切面引入新功能<-->
+        &lt;!&ndash;dash;&gt;配置切面引入新功能<&ndash;&gt;
         <aop:aspect>
             <aop:declare-parents types-matching="dao.testImpl+" implement-interface="dao.StudentImpl" delegate-ref="student" />
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
 
 </beans>
